@@ -48,7 +48,7 @@ td {
 
 textarea {
   box-sizing:border-box;
-  background-image: linear-gradient(lightgray 10%, white 10%, white 60%, lightgray 60% );
+  background-image: linear-gradient(rgba(0,0,0, 0.1) 10%, white 10%, white 60%, rgba(0,0,0, 0.1) 60% );
   background-size: 100% 3rem;
   border: .25em solid gray;
   padding: .4em .75em .4em .75em;
@@ -60,6 +60,7 @@ textarea {
   height: 100%;
   resize: none;
 }
+
 
     </style>
   <script>
@@ -124,13 +125,13 @@ function _eval(){
     <tr>
       <td>
       <div style="display:flex; height:100%; width:100%;">
-        <textarea id="expr_field" name="expr_field" onkeyup="_eval()"></textarea>
+        <textarea id="expr_field" name="expr_field" spellcheck="false" onkeyup="_eval()"></textarea>
       </div>
       </td>
       
       <td>
         <div style="display:flex; height:100%; width:100%;">
-          <textarea type="text" id="result_field" name="result_field" readonly=true></textarea>
+          <textarea type="text" id="result_field" name="result_field" spellcheck="false" readonly=true></textarea>
         </div>
         </td>
       </tr>
