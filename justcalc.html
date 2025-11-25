@@ -6,42 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JustCalc</title>
     <style>
-      body {
+* {
+  outline: 0px solid red;
+  margin: 0;
+}
+
+body {
   font-family: verdana;
   font-weight: 800;
+  position: absolute;
+  padding: 0em;
+  width: 100%;
+  height: 100%;
 }
 
 
 table{
-  width: 100%;
+  position: absolute;
+  top: 1.5em;
+  left: 1.5em;
+  width: calc(100% - 3em);
+  height: calc(100% - 3em);
+}
+
+#col1 {
+  padding: .1em 1em .1em 1em;
+  height: 2em;
+  width: 50%;
+  min-width: 100px;
+}
+
+#col2 {
+  padding: .1em 1em .1em 1em;
+  width: 10%;
+  min-width: 100px;
 }
 
 td {
-  padding: .1em 1em .1em 1em;
+  padding: 1em;
 }
 
-input{
-  outline: .25em solid gray;
-  border: none;
-  padding: .2em .0em .2em .3em;
+textarea {
+  box-sizing:border-box;
+  border: .25em solid gray;
+  padding: .4em .75em .4em .75em;
   border-radius: .5em;
   font-size: 1.25em;
   font-weight: 100;
-}
-
-#expr_field {
   width: 100%;
-  min-width: 60px;
-}
-
-#result_field {
-  width: 100%;
-  min-width: 60px;
+  height: 100%;
+  resize: none;
 }
 
     </style>
   <script>
-
+    
 pi = Math.PI;
 e = Math.E;
 degtorad =(2*Math.PI)/360.0;
@@ -69,13 +88,28 @@ function setup(){
 
 
 function _eval(){
-  let expr = document.getElementById("expr_field").value;
-  console.log("expr = " + expr);
-  let result = eval(expr);
-  console.log("result = " + result);
-  document.getElementById("result_field").value = result;
+  //let expr = document.getElementById("expr_field").value;
+  let txt = document.getElementById("expr_field").value;
+  const lines = txt.split(/\r?\n/);
+  console.log(lines);
+  
+  let results = [];
+  for (let line of lines){
+    if (line.trim().length === 0) {
+      results.push("");
+      continue;
+    }
+    results.push(eval(line));
+  }
+  
+  
+  console.log("results = " + results);
+  let results_txt = "";
+  for (const res of results){
+    results_txt += res + "\n";
+  }
+  document.getElementById("result_field").value = results_txt;
 }
-
     
   </script>
   
@@ -83,8 +117,20 @@ function _eval(){
 <body onload="setup()">
   
   <table>
-    <tr><td>Expression</td><td>Result</td></tr>
-    <tr><td><input type="text" id="expr_field" name="expr_field" onkeyup="_eval()"></td><td><input type="text" id="result_field" name="result_field" readonly=true></td></tr>
+    <tr><td id="col1">Expression</td><td id="col2">Result</td></tr>
+    <tr>
+      <td>
+      <div style="display:flex; height:100%; width:100%;">
+        <textarea id="expr_field" name="expr_field" onkeyup="_eval()"></textarea>
+      </div>
+      </td>
+      
+      <td>
+        <div style="display:flex; height:100%; width:100%;">
+          <textarea type="text" id="result_field" name="result_field" readonly=true></textarea>
+        </div>
+        </td>
+      </tr>
   </table>
 </body>
 </html>
