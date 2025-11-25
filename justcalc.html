@@ -7,7 +7,7 @@
   <title>JustCalc</title>
     
   <script>
-   
+
 degtorad =(2*Math.PI)/360.0;
 radtodeg =360.0/(2*Math.PI);
 
@@ -37,19 +37,26 @@ function setup(){
   
 }
 
+
+function _eval(str){
+  let expr = document.getElementById("expr_field").value;
+  console.log("expr = " + expr);
+  let result = eval(expr);
+  console.log("result = " + result);
+  document.getElementById("result_field").value = result;
+}
+
   </script>
   
 </head>
 <body onload="setup()">
-<p>
-  fdsfsdfdfdsfdf
-</p>
-  <button onclick="console.log(cos(90))">Cos 90</button>
-  <button onclick="console.log(cos(0))">Cos 0</button>
-  <button onclick="console.log(cos(45))">Cos 45</button>
-  <button onclick="console.log(cos(90))">Cos 90</button>
-  <button onclick="console.log(cos(0))">Cos 0</button>
-  <button onclick="console.log(cos(45))">Cos 45</button>
-  <button onclick="setup">setup()</button>
+  <button onclick="setup()">setup()</button>
+  <br>
+    <label for="expr_field">Expr:</label>
+    <input type="text" id="expr_field" name="expr_field" onkeyup="_eval()">
+    <label for="result_field">Result</label>
+    <input type="text" id="result_field" name="result_field" readonly=true>
+  
+  <button onclick="_eval()">eval()</button>
 </body>
 </html>
