@@ -1,1 +1,55 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>JustCalc</title>
+    
+  <script>
+   
+degtorad =(2*Math.PI)/360.0;
+radtodeg =360.0/(2*Math.PI);
+
+function sqrt(a){ return Math.sqrt(a);}
+function abs(a){ return Math.abs(a);}
+function floor(a){ return Math.floor(a);}
+function ceil(a){ return Math.ceil(a);}
+function round(a){ return Math.round(a);}
+
+function cos(a){ return Math.cos(degtorad*a);}
+function sin(a){ return Math.sin(degtorad*a);}
+function tan(a){ return Math.tan(degtorad*a);}
+function acos(a){ return radtodeg*Math.acos(a);}
+function asin(a){ return radtodeg*Math.asin(a);}
+function atan(a){ return radtodeg*Math.atan(a);}
+function atan2(a, b){ return radtodeg*Math.atan2(a, b);}
+
+
+
+function setup(){
+//  alert("setup");
+  console.log("cos 45 = " + cos(45));
+  console.log("2**3 = " + 2**3);
+  
+  console.log("is atan 1 = 45: " + atan(1));
+  console.log("is acos(1/sqrt(2)) = 45: " + acos(1/sqrt(2)));
+  
+}
+
+  </script>
+  
+</head>
+<body onload="setup()">
+<p>
+  fdsfsdfdfdsfdf
+</p>
+  <button onclick="console.log(cos(90))">Cos 90</button>
+  <button onclick="console.log(cos(0))">Cos 0</button>
+  <button onclick="console.log(cos(45))">Cos 45</button>
+  <button onclick="console.log(cos(90))">Cos 90</button>
+  <button onclick="console.log(cos(0))">Cos 0</button>
+  <button onclick="console.log(cos(45))">Cos 45</button>
+  <button onclick="setup">setup()</button>
+</body>
+</html>
