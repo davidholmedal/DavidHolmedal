@@ -5,10 +5,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>JustCalc</title>
-    
+    <style>
+      body {
+  font-family: verdana;
+  font-weight: 800;
+}
+
+
+table{
+  width: 100%;
+}
+
+td {
+  padding: .1em 1em .1em 1em;
+}
+
+input{
+  outline: .25em solid gray;
+  border: none;
+  padding: .2em .0em .2em .3em;
+  border-radius: .5em;
+  font-size: 1.25em;
+  font-weight: 100;
+}
+
+#expr_field {
+  width: 100%;
+  min-width: 60px;
+}
+
+#result_field {
+  width: 100%;
+  min-width: 60px;
+}
+
+    </style>
   <script>
 
-    
 pi = Math.PI;
 e = Math.E;
 degtorad =(2*Math.PI)/360.0;
@@ -48,11 +81,10 @@ function _eval(){
   
 </head>
 <body onload="setup()">
-    <label for="expr_field">Expr:</label>
-    <input type="text" id="expr_field" name="expr_field" onkeyup="_eval()">
-    <label for="result_field">Result</label>
-    <input type="text" id="result_field" name="result_field" readonly=true>
   
-    <button onclick="_eval()">evaluate</button>
+  <table>
+    <tr><td>Expression</td><td>Result</td></tr>
+    <tr><td><input type="text" id="expr_field" name="expr_field" onkeyup="_eval()"></td><td><input type="text" id="result_field" name="result_field" readonly=true></td></tr>
+  </table>
 </body>
 </html>
