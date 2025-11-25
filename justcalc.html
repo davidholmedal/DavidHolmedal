@@ -8,8 +8,11 @@
     
   <script>
 
+    
+pi = Math.PI;
+e = Math.E;
 degtorad =(2*Math.PI)/360.0;
-radtodeg =360.0/(2*Math.PI);
+radtodeg =360.0/(2*pi);
 
 function sqrt(a){ return Math.sqrt(a);}
 function abs(a){ return Math.abs(a);}
@@ -28,17 +31,11 @@ function atan2(a, b){ return radtodeg*Math.atan2(a, b);}
 
 
 function setup(){
-//  alert("setup");
-  console.log("cos 45 = " + cos(45));
-  console.log("2**3 = " + 2**3);
-  
-  console.log("is atan 1 = 45: " + atan(1));
-  console.log("is acos(1/sqrt(2)) = 45: " + acos(1/sqrt(2)));
-  
+  console.log("setup()");
 }
 
 
-function _eval(str){
+function _eval(){
   let expr = document.getElementById("expr_field").value;
   console.log("expr = " + expr);
   let result = eval(expr);
@@ -46,17 +43,16 @@ function _eval(str){
   document.getElementById("result_field").value = result;
 }
 
+    
   </script>
   
 </head>
 <body onload="setup()">
-  <button onclick="setup()">setup()</button>
-  <br>
     <label for="expr_field">Expr:</label>
     <input type="text" id="expr_field" name="expr_field" onkeyup="_eval()">
     <label for="result_field">Result</label>
     <input type="text" id="result_field" name="result_field" readonly=true>
   
-  <button onclick="_eval()">eval()</button>
+    <button onclick="_eval()">evaluate</button>
 </body>
 </html>
