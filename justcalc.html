@@ -65,6 +65,8 @@ textarea {
     </style>
   <script>
     
+
+
 pi = Math.PI;
 e = Math.E;
 degtorad =(2*Math.PI)/360.0;
@@ -75,6 +77,9 @@ function abs(a){ return Math.abs(a);}
 function floor(a){ return Math.floor(a);}
 function ceil(a){ return Math.ceil(a);}
 function round(a){ return Math.round(a);}
+function log2(a){ return Math.log2(a);}
+function log10(a){ return Math.log10(a);}
+function ln(a){ return Math.log(a);}
 
 function cos(a){ return Math.cos(degtorad*a);}
 function sin(a){ return Math.sin(degtorad*a);}
@@ -103,8 +108,13 @@ function _eval(){
       results.push("");
       continue;
     }
-    results.push(eval(line));
+    try{
+      results.push(eval(line));  
+    }catch(e){
+      results.push("Syntax Error");
+    }
   }
+  
   
   
   console.log("results = " + results);
@@ -136,6 +146,9 @@ sqrt(25)
 5**2  // = 25 Exponentiation is written with **
 degs = pi*radtodeg
 rads = degs*degtorad
+ln(e**2) // = 2 
+log10(1000) // = 3
+log2(8) // = 3
 " onkeyup="_eval()"></textarea>
       </div>
       </td>
