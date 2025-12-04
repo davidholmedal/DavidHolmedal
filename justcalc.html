@@ -51,6 +51,7 @@ textarea {
   box-sizing:border-box;
   background-image: linear-gradient(rgba(0,0,0, 0.1) 10%, white 10%, white 60%, rgba(0,0,0, 0.1) 60% );
   background-size: 100% 3rem;
+  background-attachment: local;
   border: .25em solid gray;
   padding: .4em .75em .4em .75em;
   border-radius: .5em;
@@ -65,8 +66,6 @@ textarea {
     </style>
   <script>
     
-
-
 pi = Math.PI;
 e = Math.E;
 degtorad =(2*Math.PI)/360.0;
@@ -91,8 +90,19 @@ function atan2(a, b){ return radtodeg*Math.atan2(a, b);}
 
 
 
+function syncScroll(e, other) {
+  other.scrollTop = e.target.scrollTop;
+}
+
 function setup(){
   console.log("setup()");
+  
+
+  const expr_field = document.getElementById("expr_field");
+  const result_field = document.getElementById("result_field");
+  expr_field.addEventListener("scroll", (e) => syncScroll(e, result_field));
+  result_field.addEventListener("scroll", (e) => syncScroll(e, expr_field));
+  
 }
 
 
